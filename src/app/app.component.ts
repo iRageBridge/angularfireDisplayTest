@@ -35,7 +35,6 @@ export class AppComponent {
 
   ngOnInit(){
     this.postsCol = this.afs.collection('posts');
-    //this.posts = this.postsCol.valueChanges();
     this.posts = this.postsCol.snapshotChanges()
       .map(actions=>{
         return actions.map(a=> {
@@ -47,7 +46,6 @@ export class AppComponent {
   }
 
   addPost(){
-    //this.afs.collection('posts').add({'title':this.title, 'content':this.content});
     var idName = "my-custom-id";
     this.afs.collection('posts').add({'title':this.title, 'content':this.content});
   }
@@ -59,5 +57,9 @@ export class AppComponent {
 
   deletePost(postId){
     this.afs.doc('posts/'+postId).delete();
+  }
+
+  editPost(postId){
+    this.afs.doc('posts/'+postId).set(this.content = 'edited');
   }
 }
