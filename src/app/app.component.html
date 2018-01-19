@@ -5,7 +5,7 @@
 <ul *ngFor = "let post of posts | async">
   <li (click) = "getPost(post.id)">
     <strong>{{post.data.title}} (<a href="#"(click)="deletePost(post.id)">Delete</a>)</strong>
-    <strong>{{post.data.title}} (<a href="#"(click)="editPost(post.id)">Edit</a>)</strong>
+    <strong>(<a href="#"(click)="editPost(post.id)">Edit</a>)</strong>
     <br>
     {{post.data.content}}
   </li>
